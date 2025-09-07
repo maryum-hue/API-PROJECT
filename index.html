@@ -29,13 +29,26 @@
           <a class="nav-link" href="#">Link</a>
         </li>
       </ul>
-      <form class="d-flex ms-auto">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" >Search</button>
-      </form>
+      <div class="d-flex ms-auto $enable-rounded" > 
+        <input class=" me-2" type="search" id="searchBar" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" onclick="searched(productsArray)" id="searchBtn" >Search</button>
+      </div>
     </div>
   </div>
 </nav>
+
+  <div class="d-flex justify-content-center">
+  <div class="btn-group flex-wrap" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-primary" id="four" onclick="filter('')" >All</button>
+    <button type="button" class="btn btn-primary" onclick="filter('men')" id="one">men's clothing</button>
+    <button type="button" class="btn btn-primary" id="two" onclick="filter('jewelery')" >jewelery</button>
+    <button type="button" class="btn btn-primary" id="three" onclick="filter('electronics')" >electronics</button>
+        <button type="button" class="btn btn-primary" id="four" onclick="filter('women')" >women's clothing</button>
+  </div>
+</div>
+
+  
+
     <div class="container mt-5" id="main">
 
     </div>

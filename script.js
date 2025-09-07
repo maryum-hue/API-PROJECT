@@ -1,24 +1,30 @@
 let main = document.getElementById('main');
 
-let getdata = (cb) =>{
+let getdata = () =>{
     fetch('https://fakestoreapi.com/products')
     .then(response => response.json())
     .then(response =>{
-        cb(response)
+      productsArray = response
+      console.log(productsArray)
+      data(productsArray); 
+
     })
     
 }
 
+let productsArray = [];
+
 let data = (cb) =>{
-    console.log(cb)
-let products = cb;
-products.forEach(products => {
+main.innerHTML = "";
+
+cb.forEach(products => {
     main.innerHTML +=
     `<div class="card mt-5 cards" style="width: 18rem;"; >
   <img src="${products.image}" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">${products.title}"</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title">${products.title}</h5>
+    <p class="card-text">${products.category}</p>
+    <p class="card-text">${products.description.slice(0, 70)}...</p>
     <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
   </div>
 </div>`
@@ -26,4 +32,60 @@ products.forEach(products => {
 });
 
 };
-getdata(data);
+getdata();
+
+
+//SERACH BAR WORKING
+
+let searchBar = document.getElementById('searchBar');
+let searchBtn = document.getElementById('searchBtn');
+
+
+
+// let searchit = () => {("click", ()=>{
+//      let searchValue = searchBar.value.toLowerCase()
+//      let filteredValue = productsArray.filter((products) => {
+// return products.title.toLowerCase().includes(searchValue) ||
+// products.category.toLowerCase().includes(searchValue)
+//   })
+//   data(filteredProducts)
+// });}
+
+
+let searched = ()=> {
+  let searchVal = searchBar.value.toLowerCase().trim();
+  let result = productsArray.filter((cardsInfo)=>{
+    return cardsInfo.title.toLowerCase().includes(searchVal)
+    ||cardsInfo.category.toLowerCase().includes(searchVal)
+  })
+  data(result)
+}
+searchBtn.addEventListener("click", searched);
+
+
+//filter btns
+
+// let one = document.getElementById('one');
+// let two = document.getElementById('two');
+// let three = document.getElementById('three');
+// let four = document.getElementById('four');
+
+// one.addEventListener('click',()=>{
+//   let result1 = productsArray.filter(()=>{
+//    let kj = products.title.toLowerCase() === "men's clothing"
+//     main.innerHTML= kj
+//   })
+//   return result1
+
+// })  
+// console.log(result1)
+
+
+
+let filter = (item)=> {
+  let resulty = productsArray.filter((cardsInfo)=>{
+    return cardsInfo.category.toLowerCase().includes(item)
+  })
+  data(resulty)
+}
+searchBtn.addEventListener("click", searched);
