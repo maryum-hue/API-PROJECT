@@ -90,5 +90,30 @@
    
     </div>
   </main>
+  <script>
+let product = JSON.parse(localStorage.getItem('selectedProduct'));
+
+if (product) {
+  document.querySelector('.product-image').src = product.image;
+  document.querySelector('h3').textContent = product.title;
+  document.querySelector('.text-muted.mb-3').textContent = product.description;
+  document.querySelector('.price-badge').textContent = `$${product.price}`;
+  document.querySelector('.badge').textContent = product.category;
+}
+
+document.querySelectorAll('.buy-now').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    let productId = parseInt(e.target.dataset.id);
+    let selectedProduct = productsArray.find(p => p.id === productId);
+
+    localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
+
+    // Redirect to checkout page
+    window.location.href = 'checkout.html';
+  });
+});
+
+
+  </script>
 </body>
 </html>
