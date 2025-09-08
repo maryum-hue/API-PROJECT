@@ -25,12 +25,20 @@ cb.forEach(products => {
     <h5 class="card-title">${products.title}</h5>
     <p class="card-text">${products.category}</p>
     <p class="card-text">${products.description.slice(0, 70)}...</p>
-    <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
+    <a href="#" class="btn btn-primary btn-sm buy" ">Go somewhere</a>
   </div>
 </div>`
 ;
-});
 
+
+let btn = document.querySelectorAll('.buy')
+
+  btn.forEach(btn => {
+    btn.addEventListener("click", () => {
+      window.location.href = "page.html";
+    });
+});
+  });
 };
 getdata();
 
@@ -74,6 +82,7 @@ searchBar.addEventListener("keyup", (e) =>{
 });
 
 
+
 //filter btns
 
 // let one = document.getElementById('one');
@@ -115,5 +124,15 @@ let filter = (category) => {
     data(resulty);
   }
 };
+
+//product page.html
+
+let buyPage = document.getElementsByClassName('buy');
+buyPage.addEventListener('click',()=>{
+window.location.href ='page.html'
+});
+
+//product redirecdtd
+
 
 
