@@ -25,12 +25,17 @@ cb.forEach(products => {
     <h5 class="card-title">${products.title}</h5>
     <p class="card-text">${products.category}</p>
     <p class="card-text">${products.description.slice(0, 70)}...</p>
-    <a href="#" class="btn btn-primary btn-sm buy" ">Go somewhere</a>
+    <a href="#" class="btn btn-primary btn-sm buy" data-id="${products.id}>Go somewhere</a>
+
   </div>
 </div>`
 ;
 
 
+})
+}
+
+getdata();
 let btn = document.querySelectorAll('.buy')
 
   btn.forEach(btn => {
@@ -38,10 +43,7 @@ let btn = document.querySelectorAll('.buy')
       window.location.href = "page.html";
     });
 });
-  });
-};
-getdata();
-
+  
 
 //SERACH BAR WORKING
 
@@ -132,7 +134,36 @@ buyPage.addEventListener('click',()=>{
 window.location.href ='page.html'
 });
 
-//product redirecdtd
+//product redirected
+
+let productImg = document.getElementsByClassName('product-image');
+
+let selected = (id) => {
+console.log(productsArray.id);
+
+id.forEach(productsArray => {
+  console.log(id)
+
+});
 
 
+}
 
+let idfind = (ProductId) => {
+  let idOfCard = productsArray.find(p => p.id === ProductId);
+  console.log(idOfCard);
+  return idOfCard;
+};
+
+
+if(products.id === selected){
+productImg.src === selected.src 
+}
+
+
+document.querySelectorAll('.buy').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    let productId = e.target.dataset.id;
+    console.log("Clicked product id:", productId);
+  });
+});
