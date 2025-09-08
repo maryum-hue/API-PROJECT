@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Details</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <style>
+    body { background: #f8f9fa; }
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(20,20,40,0.06);
+      padding: 22px;
+    }
+    .product-image {
+      max-width: 100%;
+      max-height: 420px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 10px;
+    }
+    .price-badge {
+      font-size: 1.4rem;
+      color: #fff;
+      background: #0d6efd;
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+    .rating-star {
+      color: #f6c84c;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .back-link { text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">My Store</a>
+      <a href="index.html" class="btn btn-outline-secondary btn-sm">← Back</a>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <div class="product-card row g-4 align-items-center">
+      
+      <!-- Product Image -->
+      <div class="col-md-5 text-center">
+        <img src="https://via.placeholder.com/400x400" alt="Product Name" class="product-image" />
+      </div>
+
+      <!-- Product Info -->
+      <div class="col-md-7">
+        <h3 class="mb-2">Sample Product Title</h3>
+        <div class="mb-2">
+          <span class="badge bg-secondary text-capitalize">Category</span>
+          <span class="ms-2 rating-star">★★★★☆</span>
+          <small class="text-muted">(120 reviews)</small>
+        </div>
+
+        <p class="text-muted mb-3">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+          Pellentesque feugiat urna non mi porttitor, a pulvinar justo convallis.
+        </p>
+
+        <div class="d-flex align-items-center mb-3">
+          <div class="me-3 price-badge">$99.99</div>
+          <div>
+            <button class="btn btn-success me-2">Add to Cart</button>
+            <button class="btn btn-outline-primary">Buy Now</button>
+          </div>
+        </div>
+
+        <div class="small text-muted">
+          <strong>Product ID:</strong> #123 &nbsp; • &nbsp;
+          <strong>Availability:</strong> In stock
+        </div>
+
+        <div class="mt-4">
+          <a href="index.html" class="btn btn-link back-link">← Back to all products</a>
+        </div>
+      </div>
+    
+    </div>
+  </main>
+  <script>
+let product = JSON.parse(localStorage.getItem('selectedProduct'));
+
+if (product) {
+  document.querySelector('.product-image').src = product.image;
+  document.querySelector('h3').textContent = product.title;
+  document.querySelector('.text-muted.mb-3').textContent = product.description;
+  document.querySelector('.price-badge').textContent = `$${product.price}`;
+  document.querySelector('.badge').textContent = product.category;
+}
+
+
+
+  </script>
+</body>
+</html>

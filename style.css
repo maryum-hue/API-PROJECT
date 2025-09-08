@@ -1,0 +1,10 @@
+#main{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap:wrap ;
+}
+
+.cards img{
+    height: 15rem;
+    object-fit: contain;
+}
