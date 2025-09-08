@@ -74,7 +74,7 @@
           <div class="me-3 price-badge">$99.99</div>
           <div>
             <button class="btn btn-success me-2">Add to Cart</button>
-            <button class="btn btn-outline-primary">Buy Now</button>
+            <button class="btn btn-outline-primary btn-buy-now">Buy Now</button>
           </div>
         </div>
 
@@ -101,19 +101,14 @@ if (product) {
   document.querySelector('.badge').textContent = product.category;
 }
 
-document.querySelectorAll('.buy-now').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    let productId = parseInt(e.target.dataset.id);
-    let selectedProduct = productsArray.find(p => p.id === productId);
-
-    localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
-
-    // Redirect to checkout page
+document.querySelector('.btn-buy-now')?.addEventListener('click', () => {
+  if (product) {
+    localStorage.setItem('checkoutProduct', JSON.stringify(product));
     window.location.href = 'checkout.html';
-  });
+  } else {
+    alert("⚠️ No product selected!");
+  }
 });
-
-
   </script>
 </body>
 </html>

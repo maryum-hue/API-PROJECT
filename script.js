@@ -18,20 +18,22 @@ let data = (cb) => {
 
   cb.forEach(products => {
     main.innerHTML += `
-      <div class="card mt-5 cards" style="width: 18rem;">
-        <img src="${products.image}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${products.title}</h5>
-          <p class="card-text">${products.category}</p>
-          <p class="card-text">${products.description.slice(0, 70)}...</p>
-          <button class="btn btn-primary btn-sm buy" data-id="${products.id}">
-            Go somewhere
-          </button>
-          <button class="btn btn-success btn-sm buy-now" data-id="${products.id}">
-          Buy Now
-        </button>
-        </div>
-      </div>`;
+  <div class="card mt-5 cards" style="width: 18rem;">
+    <img src="${products.image}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${products.title}</h5>
+      <p class="card-text">${products.category}</p>
+      <p class="card-text">${products.description.slice(0, 70)}...</p>
+
+      <button class="btn btn-success btn-sm buy-now" data-id="${products.id}">
+        Buy Now
+      </button>
+      <button class="btn btn-outline-primary btn-sm buy" data-id="${products.id}">
+        View Details
+      </button>
+    </div>
+  </div>`;
+
   });
 
 
@@ -103,11 +105,14 @@ let attachBuyNowEvents = () => {
       let productId = parseInt(e.target.dataset.id);
       let selectedProduct = productsArray.find(p => p.id === productId);
 
-      // Save product in localStorage
-      localStorage.setItem('checkoutProduct', JSON.stringify(selectedProduct));
+      console.log("Selected product for checkout:", selectedProduct); // Debugging
 
-      // Redirect to checkout page
-      window.location.href = 'checkout.html';
+      if (selectedProduct) {
+        localStorage.setItem('checkoutProduct', JSON.stringify(selectedProduct));
+        window.location.href = 'checkout.html';  // make sure checkout.html is in same folder
+      } else {
+        console.error("❌ Product not found for ID:", productId);
+      }
     });
   });
 };
