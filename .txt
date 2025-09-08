@@ -1,3 +1,3 @@
 git add .
-git commit -m "page.html & some updates"
+git commit -m "PAGE.HTML"
 git push
