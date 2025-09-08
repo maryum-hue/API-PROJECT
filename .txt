@@ -1,3 +1,3 @@
 git add .
-git commit -m "updated with filter btns"
+git commit -m "page.html & some updates"
 git push

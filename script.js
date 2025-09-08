@@ -62,6 +62,17 @@ let searched = ()=> {
 }
 searchBtn.addEventListener("click", searched);
 
+searchBar.addEventListener("keyup", (e) =>{
+  if(e.key === "Enter"){
+      searched();
+  }
+});
+searchBar.addEventListener("keyup", (e) =>{
+  if(e.key === 13){
+      searched();
+  }
+});
+
 
 //filter btns
 
@@ -82,10 +93,27 @@ searchBtn.addEventListener("click", searched);
 
 
 
-let filter = (item)=> {
-  let resulty = productsArray.filter((cardsInfo)=>{
-    return cardsInfo.category.toLowerCase().includes(item)
-  })
-  data(resulty)
+// let filter = (item)=> {
+//   let resulty = productsArray.filter((cardsInfo)=>{
+//     return cardsInfo.category.toLowerCase().includes(item)
+//   })
+//   data(resulty)
+// }
+// searchBtn.addEventListener("click", searched);
+
+let filter = (category) => {
+  if (category === "all") {
+    data(productsArray);
+  } if (searchVal === "") {
+  main.innerHTML = `<h3 class="text-center mt-5">Please type something to search 🔍</h3>`;
+  return;
 }
-searchBtn.addEventListener("click", searched);
+  else {
+    let resulty = productsArray.filter(item =>
+      item.category.toLowerCase() === category.toLowerCase()
+    );
+    data(resulty);
+  }
+};
+
+
