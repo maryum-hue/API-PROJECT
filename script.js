@@ -25,7 +25,7 @@ cb.forEach(products => {
     <h5 class="card-title">${products.title}</h5>
     <p class="card-text">${products.category}</p>
     <p class="card-text">${products.description.slice(0, 70)}...</p>
-    <a href="#" class="btn btn-primary btn-sm buy" data-id="${products.id}>Go somewhere</a>
+<a href="#" class="btn btn-primary btn-sm buy" data-id="${products.id}">Go somewhere</a>
 
   </div>
 </div>`
